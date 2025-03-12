@@ -1,103 +1,239 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import { useState, useMemo } from 'react';
+import products from './products.json';
+import { FaWhatsapp, FaFilter, FaInstagram, FaFacebook } from 'react-icons/fa';
+import { Product } from './types';
+
+export default function ProductsPage() {
+  const [selectedKalite, setSelectedKalite] = useState<string>('');
+  const [selectedKalinlik, setSelectedKalinlik] = useState<number | ''>('');
+  const [selectedYuzey, setSelectedYuzey] = useState<string>('');
+  const [selectedGenislik, setSelectedGenislik] = useState<string>('');
+
+  // Genişlik aralıkları
+  const genislikAraliklari = [
+    { label: '0-500 mm', min: 0, max: 500 },
+    { label: '500-999 mm', min: 500, max: 999 },
+    { label: '1000-1300 mm', min: 1000, max: 1300 },
+    { label: '1300-1700 mm', min: 1300, max: 1700 }
+  ];
+
+  // Benzersiz değerleri al
+  const uniqueKalite = useMemo(() => [...new Set(products.map(p => p.kalite))].sort(), []);
+  const uniqueKalinlik = useMemo(() => [...new Set(products.map(p => p.kalınlık))].sort((a, b) => a - b), []);
+  const uniqueYuzey = useMemo(() => [...new Set(products.map(p => p.yüzey))].sort(), []);
+
+  // Filtrelenmiş ürünler
+  const filteredProducts = useMemo(() => {
+    return products.filter(product => {
+      const kaliteMatch = !selectedKalite || product.kalite === selectedKalite;
+      const kalinlikMatch = !selectedKalinlik || product.kalınlık === selectedKalinlik;
+      const yuzeyMatch = !selectedYuzey || product.yüzey === selectedYuzey;
+
+      // Genişlik filtresi
+      const genislikMatch = !selectedGenislik || (() => {
+        const aralik = genislikAraliklari.find(a => a.label === selectedGenislik);
+        return aralik ? (product.genişlik >= aralik.min && product.genişlik <= aralik.max) : true;
+      })();
+
+      return kaliteMatch && kalinlikMatch && yuzeyMatch && genislikMatch;
+    });
+  }, [selectedKalite, selectedKalinlik, selectedYuzey, selectedGenislik]);
+
+  const handleWhatsAppClick = (product: Product) => {
+    const message = `${product.kalite} kalite, ${product.kalınlık}mm kalınlık, ${product.genişlik}mm genişlik ürün hakkında bilgi almak istiyorum.`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/905321373319?text=${encodedMessage}`;
+    window.open(whatsappURL, '_blank');
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto p-6 space-y-8">
+        {/* Header Bölümü */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+          <div className="flex justify-between items-center">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-800 mb-2">
+                Paslanmaz Çelik'te Son Nokta
+              </h1>
+              <p className="text-gray-600">
+                Tüm ürünlerimiz stok kontrolü yapılarak listelenmektedir
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <a
+                href="https://instagram.com/kutlupaslanmaz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-pink-600 hover:text-pink-700 transition-colors"
+                title="Instagram'da bizi takip edin"
+              >
+                <FaInstagram size={24} />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=100001055986294"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 transition-colors"
+                title="Facebook'ta bizi takip edin"
+              >
+                <FaFacebook size={24} />
+              </a>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Filtre Bölümü */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+          <div className="flex items-center gap-2 mb-4 text-gray-700">
+            <FaFilter className="text-blue-500" />
+            <h2 className="font-semibold">Filtreleme Seçenekleri</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Kalite</label>
+              <select
+                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={selectedKalite}
+                onChange={(e) => setSelectedKalite(e.target.value)}
+              >
+                <option value="">Tümü</option>
+                {uniqueKalite.map(kalite => (
+                  <option key={kalite} value={kalite}>{kalite}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Kalınlık</label>
+              <select
+                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={selectedKalinlik}
+                onChange={(e) => setSelectedKalinlik(e.target.value ? Number(e.target.value) : '')}
+              >
+                <option value="">Tümü</option>
+                {uniqueKalinlik.map(kalinlik => (
+                  <option key={kalinlik} value={kalinlik}>{kalinlik} mm</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Yüzey</label>
+              <select
+                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={selectedYuzey}
+                onChange={(e) => setSelectedYuzey(e.target.value)}
+              >
+                <option value="">Tümü</option>
+                {uniqueYuzey.map(yuzey => (
+                  <option key={yuzey} value={yuzey}>{yuzey}</option>
+                ))}
+              </select>
+            </div>
+
+            {/* Yeni Genişlik Filtresi */}
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Genişlik</label>
+              <select
+                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                value={selectedGenislik}
+                onChange={(e) => setSelectedGenislik(e.target.value)}
+              >
+                <option value="">Tümü</option>
+                {genislikAraliklari.map(aralik => (
+                  <option key={aralik.label} value={aralik.label}>
+                    {aralik.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          {/* Filtreleri Temizle Butonu */}
+          {(selectedKalite || selectedKalinlik || selectedYuzey || selectedGenislik) && (
+            <div className="mt-4 flex justify-end">
+              <button
+                onClick={() => {
+                  setSelectedKalite('');
+                  setSelectedKalinlik('');
+                  setSelectedYuzey('');
+                  setSelectedGenislik('');
+                }}
+                className="px-4 py-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors"
+              >
+                Filtreleri Temizle
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Tablo Bölümü */}
+        <div className="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gradient-to-r from-blue-50 to-blue-100">
+                <tr>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Kalite
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Yüzey
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Kalınlık (mm)
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Genişlik (mm)
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Uzunluk (mm)
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    Ağırlık (kg)
+                  </th>
+                  <th className="px-6 py-4 text-left text-xs font-bold text-blue-900 uppercase tracking-wider border-b-2 border-blue-200">
+                    İletişim
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {filteredProducts.map((product: Product, index: number) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.kalite}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.yüzey}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.kalınlık}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.genişlik}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                      {typeof product.uzunluk === 'string'
+                        ? product.uzunluk
+                        : (product.uzunluk === 0
+                          ? <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">RULO</span>
+                          : product.uzunluk)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{product.ağırlık}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <button
+                        onClick={() => handleWhatsAppClick(product)}
+                        className="inline-flex items-center justify-center p-2 text-green-600 hover:text-green-700 hover:bg-green-50 rounded-full transition-all"
+                        title="WhatsApp ile iletişime geç"
+                      >
+                        <FaWhatsapp size={20} />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
