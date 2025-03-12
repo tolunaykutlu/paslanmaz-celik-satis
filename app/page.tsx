@@ -25,13 +25,13 @@ export default function ProductsPage() {
   const uniqueYuzey = useMemo(() => [...new Set(products.map(p => p.yüzey))].sort(), []);
 
   // Filtrelenmiş ürünler
+  // genislikAraliklari'ni dependencies array'e ekleyelim
   const filteredProducts = useMemo(() => {
     return products.filter(product => {
       const kaliteMatch = !selectedKalite || product.kalite === selectedKalite;
       const kalinlikMatch = !selectedKalinlik || product.kalınlık === selectedKalinlik;
       const yuzeyMatch = !selectedYuzey || product.yüzey === selectedYuzey;
 
-      // Genişlik filtresi
       const genislikMatch = !selectedGenislik || (() => {
         const aralik = genislikAraliklari.find(a => a.label === selectedGenislik);
         return aralik ? (product.genişlik >= aralik.min && product.genişlik <= aralik.max) : true;
@@ -39,7 +39,7 @@ export default function ProductsPage() {
 
       return kaliteMatch && kalinlikMatch && yuzeyMatch && genislikMatch;
     });
-  }, [selectedKalite, selectedKalinlik, selectedYuzey, selectedGenislik]);
+  }, [selectedKalite, selectedKalinlik, selectedYuzey, selectedGenislik, genislikAraliklari]); // genislikAraliklari eklendi
 
   const handleWhatsAppClick = (product: Product) => {
     const message = `${product.kalite} kalite, ${product.kalınlık}mm kalınlık, ${product.genişlik}mm genişlik ürün hakkında bilgi almak istiyorum.`;
@@ -56,7 +56,7 @@ export default function ProductsPage() {
           <div className="flex justify-between items-center">
             <div>
               <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                Paslanmaz Çelik'te Son Nokta
+              Paslanmaz çelik&apos;te son nokta
               </h1>
               <p className="text-gray-600">
                 Tüm ürünlerimiz stok kontrolü yapılarak listelenmektedir

@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+
 
 // Metadata ekleyelim
 export const metadata = {
