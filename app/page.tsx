@@ -42,7 +42,7 @@ export default function ProductsPage() {
   }, [selectedKalite, selectedKalinlik, selectedYuzey, selectedGenislik, genislikAraliklari]); // genislikAraliklari eklendi
 
   const handleWhatsAppClick = (product: Product) => {
-    const message = `${product.kalite} kalite, ${product.kalınlık}mm kalınlık, ${product.genişlik}mm genişlik ürün hakkında bilgi almak istiyorum.`;
+    const message = `${product.kalite} kalite, ${product.kalınlık}mm kalınlık, ${product.genişlik}mm ve ${product.ağırlık} genişlik ürün hakkında bilgi almak istiyorum.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappURL = `https://wa.me/905321373319?text=${encodedMessage}`;
     window.open(whatsappURL, '_blank');
