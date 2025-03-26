@@ -5,7 +5,7 @@
     "kalınlık": 0.40,
     "genişlik": 718,
     "uzunluk": 0,
-    "ağırlık": "833 kg"
+    "ağırlık": 833
   },
   {
     "kalite": "304 L",
@@ -13,7 +13,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.3,
     "uzunluk": 0,
-    "ağırlık": "705 kg"
+    "ağırlık": 705
   },
   {
     "kalite": "304 L",
@@ -21,7 +21,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.3,
     "uzunluk": 0,
-    "ağırlık": "500 kg"
+    "ağırlık": 500
   },
   {
     "kalite": "304 L",
@@ -29,7 +29,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "461 kg"
+    "ağırlık": 461
   },
   {
     "kalite": "304 L",
@@ -37,7 +37,7 @@
     "kalınlık": 0.40,
     "genişlik": 718,
     "uzunluk": 0,
-    "ağırlık": "387 kg"
+    "ağırlık": 387
   },
   {
     "kalite": "304 L",
@@ -45,7 +45,7 @@
     "kalınlık": 0.40,
     "genişlik": 718,
     "uzunluk": 0,
-    "ağırlık": "387 kg"
+    "ağırlık": 387
   },
   {
     "kalite": "304 L",
@@ -53,7 +53,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "367 kg"
+    "ağırlık": 367
   },
   {
     "kalite": "304 L",
@@ -61,7 +61,7 @@
     "kalınlık": 0.40,
     "genişlik": 754.8,
     "uzunluk": 0,
-    "ağırlık": "366 kg"
+    "ağırlık": 366
   },
   {
     "kalite": "304 L",
@@ -69,7 +69,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "361 kg"
+    "ağırlık": 361
   },
   {
     "kalite": "304 L",
@@ -77,7 +77,7 @@
     "kalınlık": 0.40,
     "genişlik": 718,
     "uzunluk": 0,
-    "ağırlık": "310 kg"
+    "ağırlık": 310
   },
   {
     "kalite": "304 L",
@@ -85,7 +85,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "303 kg"
+    "ağırlık": 303
   },
   {
     "kalite": "304 L",
@@ -93,7 +93,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "303 kg"
+    "ağırlık": 303
   },
   {
     "kalite": "304 L",
@@ -101,7 +101,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.3,
     "uzunluk": 0,
-    "ağırlık": "219 kg"
+    "ağırlık": 219
   },
   {
     "kalite": "304 L",
@@ -109,7 +109,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.3,
     "uzunluk": 0,
-    "ağırlık": "219 kg"
+    "ağırlık": 219
   },
   {
     "kalite": "304 L",
@@ -117,7 +117,7 @@
     "kalınlık": 0.40,
     "genişlik": 718.2,
     "uzunluk": 0,
-    "ağırlık": "200 kg"
+    "ağırlık": 200
   },
   {
     "kalite": 430,
@@ -125,7 +125,7 @@
     "kalınlık": 0.80,
     "genişlik": 110,
     "uzunluk": 0,
-    "ağırlık": "802 kg"
+    "ağırlık": 802
   },
   {
     "kalite": 430,
@@ -133,7 +133,7 @@
     "kalınlık": 0.80,
     "genişlik": 110,
     "uzunluk": 0,
-    "ağırlık": "802 kg"
+    "ağırlık": 802
   },
   {
     "kalite": 430,
@@ -141,7 +141,7 @@
     "kalınlık": 0.80,
     "genişlik": 110,
     "uzunluk": 0,
-    "ağırlık": "799 kg"
+    "ağırlık": 799
   },
   {
     "kalite": 430,
@@ -149,15 +149,15 @@
     "kalınlık": 0.80,
     "genişlik": 110,
     "uzunluk": 0,
-    "ağırlık": "799 kg"
+    "ağırlık": 799
   },
-    {
+  {
     "kalite": 430,
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 50,
     "uzunluk": 0,
-    "ağırlık": "77 kg"
+    "ağırlık": 77
   },
   {
     "kalite": 430,
@@ -165,7 +165,7 @@
     "kalınlık": 0.40,
     "genişlik": 150,
     "uzunluk": 0,
-    "ağırlık": "1,164 kg"
+    "ağırlık": 1164
   },
   {
     "kalite": 430,
@@ -173,7 +173,7 @@
     "kalınlık": 0.40,
     "genişlik": 150,
     "uzunluk": 0,
-    "ağırlık": "1,150 kg"
+    "ağırlık": 1150
   },
   {
     "kalite": 430,
@@ -181,7 +181,7 @@
     "kalınlık": 0.40,
     "genişlik": 150.3,
     "uzunluk": 0,
-    "ağırlık": "1,136 kg"
+    "ağırlık": 1136
   },
   {
     "kalite": 430,
@@ -189,6 +189,6 @@
     "kalınlık": 0.40,
     "genişlik": 150.3,
     "uzunluk": 0,
-    "ağırlık": "1,126 kg"
+    "ağırlık": 1126
   }
 ]
