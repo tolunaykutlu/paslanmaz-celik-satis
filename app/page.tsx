@@ -59,7 +59,7 @@ export default function ProductsPage() {
               Paslanmaz çelik&apos;te son nokta
               </h1>
               <p className="text-gray-600">
-                Tüm ürünlerimiz stok kontrolü yapılarak listelenmektedir
+                Fiyat almak için ulaşınız..
               </p>
             </div>
             <div className="flex gap-4">
