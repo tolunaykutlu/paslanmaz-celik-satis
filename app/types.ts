@@ -1,8 +1,8 @@
 export interface Product {
-  kalite: string;
+  kalite: string | number;
   yüzey: string;
   kalınlık: number;
   genişlik: number;
-  uzunluk: number | string; // uzunluk hem number hem string olabilir
+  uzunluk: number;
   ağırlık: number;
 }
