@@ -120,7 +120,7 @@
     "ağırlık": 200
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "2B",
     "kalınlık": 0.80,
     "genişlik": 110,
@@ -128,7 +128,7 @@
     "ağırlık": 802
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "2B",
     "kalınlık": 0.80,
     "genişlik": 110,
@@ -136,7 +136,7 @@
     "ağırlık": 802
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "2B",
     "kalınlık": 0.80,
     "genişlik": 110,
@@ -144,7 +144,7 @@
     "ağırlık": 799
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "2B",
     "kalınlık": 0.80,
     "genişlik": 110,
@@ -152,7 +152,7 @@
     "ağırlık": 799
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 50,
@@ -160,7 +160,7 @@
     "ağırlık": 77
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 150,
@@ -168,7 +168,7 @@
     "ağırlık": 1164
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 150,
@@ -176,7 +176,7 @@
     "ağırlık": 1150
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 150.3,
@@ -184,7 +184,7 @@
     "ağırlık": 1136
   },
   {
-    "kalite": 430,
+    "kalite": "430",
     "yüzey": "BA",
     "kalınlık": 0.40,
     "genişlik": 150.3,
